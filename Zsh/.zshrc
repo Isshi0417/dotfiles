@@ -1,10 +1,4 @@
-# Set path
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
-
-# Plugins
-plugins=(git)
-
-# Start starship
 eval "$(starship init zsh)"
-
+eval "$(zoxide init zsh)"
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
