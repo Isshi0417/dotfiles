@@ -66,3 +66,15 @@ gh auth login
 echo "Symlinking dotfiles..."
 cd dotfiles
 stow */
+
+# Configure spicetify
+spicetify backup apply
+cd
+cd .config/spicetify/Themes/Dribbblish
+spicetify config current_theme Dribbblish color_scheme base
+spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
+spicetify apply
+
+# Set up onedrive
+onedrive
+onedrive --synchronize
