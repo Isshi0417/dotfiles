@@ -43,6 +43,9 @@ brew install zoxide
 echo "Installing spicetify..."
 brew install spicetify
 
+echo "Installing eza..."
+brew install eza
+
 # Flatpaks
 echo "Installing ferdium..."
 flatpak install ferdium
@@ -53,28 +56,5 @@ flatpak install obsidian
 echo "Installing spotify..."
 flatpak install spotify
 
-# Change default shell to zsh
-echo "Changing shell to zsh..."
-chsh -s $(which zsh)
-
-# Set up Git
-echo "Setting up git and GitHub..."
-git config --global user.email "isshi0417@gmail.com"
-gh auth login
-
-# Symlink dotfiles
-echo "Symlinking dotfiles..."
-cd dotfiles
-stow */
-
-# Configure spicetify
-spicetify backup apply
-cd
-cd .config/spicetify/Themes/Dribbblish
-spicetify config current_theme Dribbblish color_scheme base
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
-spicetify apply
-
-# Set up onedrive
-onedrive
-onedrive --synchronize
+# Restart
+systemctl restart
