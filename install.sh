@@ -48,13 +48,13 @@ brew install eza
 
 # Flatpaks
 echo "Installing ferdium..."
-flatpak install ferdium
+flatpak install flathub org.ferdium.Ferdium
 
 echo "Installing obsidian..."
-flatpak install obsidian
+flatpak install flathub md.obsidian.Obsidian
 
 echo "Installing spotify..."
-flatpak install spotify
+flatpak install flathub com.spotify.Client
 
 # Restart
 systemctl restart
