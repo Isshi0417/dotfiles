@@ -29,7 +29,7 @@ prmpt "set up spicetify" "spicetify backup apply"
 # Set up onedrive
 prmpt "set up OneDrive autostart" "brew services start onedrive"
 prmpt "log into OneDrive" "onedrive"
-prmpt "synchronize OneDrive right now" "onedrive --synchronize" 
+prmpt "synchronize OneDrive now" "onedrive --synchronize" 
 
 # Restart
 prmpt "restart now" "systemctl restart"
