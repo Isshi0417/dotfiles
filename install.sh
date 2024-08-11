@@ -1,5 +1,28 @@
 #!/usr/bin/sh
 
+dwnld() {
+  while true; do
+    read -p "Do you wish to install $1? " yn
+    case $yn in
+      [Yy]* ) $2; break;;
+      [Nn]* ) break;;
+      * ) echo "Please answer yes or no.";;
+    esac
+  done
+}
+
+rpm() {
+  rpm-ostree install $1 
+}
+
+brw() {
+  brew install $1
+}
+
+flt() {
+  flatpak install flathub $1
+}
+
 # Layered Packages
 wget https://raw.githubusercontent.com/trytomakeyouprivate/COPR-OSTree/main/copr -P ~/.local/bin/ &&\
 chmod +x ~/.local/bin/copr
@@ -10,51 +33,27 @@ copr enable wezfurlong/wezterm-nightly
 sudo ostree remote add mullvad
 
 echo "Installing layered packages..."
-rpm-ostree install helix
-rpm-ostree install wezterm
-rpm-ostree install mullvad-vpn
-rpm-ostree install zsh
+dwnld "helix" "rpm helix"
+dwnld "wezterm" "rpm wezterm"
+dwnld "mullvad" "rpm mullvad-vpn"
+dwnld "zsh" "rpm zsh"
 
 # Linuxbrew Packages
-echo "Installing gh..."
-brew install gh
-
-echo "Installing lazygit..."
-brew install laygit
-
-echo "Installing onedrive..."
-brew install onedrive
-
-echo "Installing pandoc..."
-brew install pandoc
-
-echo "Installing starship..."
-brew install starship
-
-echo "Installing stow..."
-brew install stow
-
-echo "Installing thefuck..."
-brew install thefuck
-
-echo "Installing zoxide..."
-brew install zoxide
-
-echo "Installing spicetify..."
-brew install spicetify
-
-echo "Installing eza..."
-brew install eza
+dwnld "gh" "brw gh"
+dwnld "lazygit" "brw lazygit"
+dwnld "onedrive" "brw onedrive"
+dwnld "pandoc" "brw pandoc"
+dwnld "starship" "brw starship"
+dwnld "stow" "brw stow"
+dwnld "thefuck" "brw thefuck"
+dwnld "zoxide" "brw zoxide"
+dwnld "spicetify" "brw spicetify"
+dwnld "eza" "brw eza"
 
 # Flatpaks
-echo "Installing ferdium..."
-flatpak install flathub org.ferdium.Ferdium
-
-echo "Installing obsidian..."
-flatpak install flathub md.obsidian.Obsidian
-
-echo "Installing spotify..."
-flatpak install flathub com.spotify.Client
+dwnld "ferdium" "flt org.ferdium.Ferdium"
+dwnld "obsidian" "flt md.obsidian.Obsidian"
+dwnld "spotify" "flt com.spotify.Client"
 
 # Restart
 systemctl restart
