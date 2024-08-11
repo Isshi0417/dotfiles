@@ -1,24 +1,35 @@
 #!/usr/bin/sh
 
+prmpt() {
+  while true; do
+    read -p "Do you wish to $1? " yn
+    case $yn in
+      [Yy]* ) $2; break;;
+      [Nn]* ) break;;
+      * ) echo "Please answer yes or no";;
+    esac
+  done
+}
+
 # Change default shell to zsh
-echo "Changing shell to zsh..."
-chsh -s $(which zsh)
+prmpt "change default shell to zsh" "chsh -s $(which zsh)"
 
 # Set up Git
-echo "Setting up git and GitHub..."
-git config --global user.email "isshi0417@gmail.com"
-gh auth login
+prmpt "set up git?" 'git config --global user.email "isshi0417@gmail.com"'
+echo "Git configuration complete!"
+
+prmpt "authorize GitHub HTTP" "gh auth login"
 
 # Symlink dotfiles
-echo "Symlinking dotfiles..."
-cd dotfiles
-stow */
+prmpt "symlink dotfiles" "stow */"
 
 # Configure spicetify
-spicetify backup apply
+prmpt "set up spicetify" "spicetify backup apply"
 
 # Set up onedrive
-brew services start onedrive
-onedrive
-onedrive --synchronize
+prmpt "set up OneDrive autostart" "brew services start onedrive"
+prmpt "log into OneDrive" "onedrive"
+prmpt "synchronize OneDrive right now" "onedrive --synchronize" 
 
+# Restart
+prmpt "restart now" "systemctl restart"
