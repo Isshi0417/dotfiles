@@ -56,4 +56,5 @@ dwnld "obsidian" "flt md.obsidian.Obsidian"
 dwnld "spotify" "flt com.spotify.Client"
 
 # Restart
+echo "Restarting..."
 systemctl restart
