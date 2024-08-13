@@ -37,6 +37,7 @@ dwnld "helix" "rpm helix"
 dwnld "wezterm" "rpm wezterm"
 dwnld "mullvad" "rpm mullvad-vpn"
 dwnld "zsh" "rpm zsh"
+dwnld "kvantum" "rpm kvantum"
 
 # Linuxbrew Packages
 dwnld "gh" "brw gh"
