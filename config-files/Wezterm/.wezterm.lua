@@ -5,7 +5,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 -- Color Scheme
-config.color_scheme = 'Gruvbox dark, medium (base16)'
+config.color_scheme = 'Everforest Dark Medium (Gogh)'
 
 -- Font
 config.font = wezterm.font 'JetBrainsMono Nerd Font'
