@@ -30,14 +30,13 @@ chmod +x ~/.local/bin/copr
 echo "Adding repos..."
 copr enable varlad/helix
 copr enable wezfurlong/wezterm-nightly
-sudo ostree remote add mullvad
 
 echo "Installing layered packages..."
 dwnld "helix" "rpm helix"
 dwnld "wezterm" "rpm wezterm"
-dwnld "mullvad" "rpm mullvad-vpn"
 dwnld "zsh" "rpm zsh"
-dwnld "kvantum" "rpm kvantum"
+dwnld "ocs-url" "rpm ./local-rpm/ocs-url-3.1.0-1.fc20.x86_64.rpm"
+dwnld "mullvad" "rpm ./local-rom/MullvadVPN-2024.4._x86_64.rpm"
 
 # Linuxbrew Packages
 dwnld "gh" "brw gh"
