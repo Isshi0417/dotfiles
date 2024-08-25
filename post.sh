@@ -44,7 +44,7 @@ prmpt "set up git?" 'git config --global user.email "isshi0417@gmail.com"'
 prmpt "authorize GitHub HTTP" "gh auth login"
 
 # Symlink dotfiles
-prmpt "symlink dotfiles" "stow */"
+prmpt "symlink dotfiles" "stow config-files/*/"
 
 # Configure spicetify
 prmpt "set up spicetify" "spicetify backup apply"
